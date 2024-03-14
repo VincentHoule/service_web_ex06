@@ -23,7 +23,7 @@ Pokemons.trouverUnPokemon = (id) => {
                 reject(erreur);
             }
             // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
-            resolve(resultat);
+            resolve(resultat.rows);
         });
     });
 };
@@ -41,7 +41,7 @@ Pokemons.trouverUnType = (type) => {
                 reject(erreur);
             }
             // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
-            resolve(resultat);
+            resolve(resultat.rows);
         });
     });
 
@@ -60,7 +60,7 @@ Pokemons.ajouterUnPokemon = (nom, type_primaire, type_secondaire, pv, attaque, d
                 reject(erreur);
             }
             // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
-            resolve(resultat);
+            resolve(resultat.rows);
         })
     });
 
@@ -79,7 +79,7 @@ Pokemons.modifierUnPokemon = (nom, type_primaire, type_secondaire, pv, attaque, 
                 reject(erreur);
             }
             // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
-            resolve(resultat);
+            resolve(resultat.rows);
         })
     });
 };
@@ -96,7 +96,7 @@ Pokemons.supprimerUnPokemon = (id) => {
                 reject(erreur);
             }
             // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
-            resolve(resultat);
+            resolve(resultat.rows);
         })
     });
 
