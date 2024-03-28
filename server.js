@@ -2,7 +2,7 @@ const express = require ('express');
 // Importation du module swagger-ui-express
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(express.json());
 app.use('/api/pokemons', require('./src/routes/pokemons'));

@@ -30,10 +30,18 @@ Pokemons.trouverUnPokemon = (id) => {
 
 Pokemons.trouverUnType = (type) => {
     return new Promise((resolve, reject) => {
+        var requete = ""
+        if (type == ""){
+            requete = `SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense 
+            FROM pokemon $1;`;
+        }
+        else{
+            requete = `SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense 
+            FROM pokemon WHERE type_primaire = $1;`;
+        }
 
-        const requete = `SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense 
-        FROM pokemon WHERE type_primaire = $1 OR type_secondaire = $2;`;
-        const params = [type, type];
+        const params = [type]
+        
 
         sql.query(requete, params, (erreur, resultat) => {
             if (erreur) {

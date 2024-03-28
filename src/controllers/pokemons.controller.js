@@ -38,15 +38,19 @@ exports.trouverUnPokemon = (req, res) => {
 
 exports.trouverUnType = (req, res) => {
     // Teste si le paramètre id est présent et valide
-    if (!req.query.type || req.query.type == "") {
-        res.status(400);
-        res.send({
-            message: "Le type ne doit pas être vide"
-        });
-        return;
+    var type = "";
+    var page = 1;
+    if (req.query.type) {
+        type = req.query.type
     }
 
-    if (!req.query.page || parseInt(req.query.page) <= 0) {
+
+    if(req.query.page)
+    {
+        page = req.query.page;
+    }
+
+    if (parseInt(req.query.page) <= 0) {
         res.status(400);
         res.send({
             message: "La page ne doit pas être vide ou égale à 0 et moins"
@@ -54,22 +58,22 @@ exports.trouverUnType = (req, res) => {
         return;
     }
 
-    Pokemons.trouverUnType(req.query.type)
+    Pokemons.trouverUnType(type)
         .then((Pokemons) => {
             // S'il n'y a aucun résultat, on retourne un message d'erreur avec le code 404
             if (!Pokemons[0]) {
                 res.status(404);
                 res.send({
-                    message: `pokemon introuvable ${req.query.type}`
+                    message: `pokemon introuvable ${type}`
                 });
                 return;
             }
             //
             res.send({
-                Pokemons: Pokemons.slice(req.query.page * 25 - 25, req.query.page * 25),
-                type: req.query.type,
+                Pokemons: Pokemons.slice(page * 25 - 25, page * 25),
+                type: type,
                 Nombre_de_Pokemons: Pokemons.length,
-                page: parseInt(req.query.page),
+                page: parseInt(page),
                 Nombre_de_pages: Math.ceil(Pokemons.length / 25)
             });
 
