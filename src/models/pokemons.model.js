@@ -14,7 +14,7 @@ const Pokemons = (pokemons) => {
 Pokemons.trouverUnPokemon = (id) => {
     return new Promise((resolve, reject) => {
 
-        const requete = `SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense FROM pokemon WHERE id = $1;`;
+        const requete = 'SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense FROM pokemon WHERE id = $1';
         const params = [id]
 
         sql.query(requete, params, (erreur, resultat) => {
