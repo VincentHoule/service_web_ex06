@@ -32,7 +32,7 @@ Pokemons.trouverUnType = (type) => {
     return new Promise((resolve, reject) => {
         var requete = ""
         if (type == ""){
-            requete = 'SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense FROM pokemon;';
+            requete = 'SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense FROM pokemon';
         }
         else{
             requete = 'SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense FROM pokemon WHERE type_primaire = $1';
