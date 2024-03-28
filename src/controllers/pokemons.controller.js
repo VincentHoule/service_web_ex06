@@ -45,7 +45,7 @@ exports.trouverUnType = (req, res) => {
     }
 
 
-    if(req.query.page)
+    if(req.query.page || req.query.page != null)
     {
         page = req.query.page;
     }
@@ -64,7 +64,7 @@ exports.trouverUnType = (req, res) => {
             if (!Pokemons[0]) {
                 res.status(404);
                 res.send({
-                    message: `pokemon introuvable ${type}`
+                    message: `pokemon introuvable ${Pokemons}`
                 });
                 return;
             }
