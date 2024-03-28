@@ -38,7 +38,7 @@ exports.trouverUnPokemon = (req, res) => {
 
 exports.trouverUnType = (req, res) => {
     // Teste si le paramètre id est présent et valide
-    var type = "";
+    var type = [];
     var page = 1;
     if (req.query.type) {
         type = req.query.type
@@ -83,7 +83,7 @@ exports.trouverUnType = (req, res) => {
             console.log('Erreur : ', erreur);
             res.status(500)
             res.send({
-                message: "Erreur lors de la récupération du pokemon avec le type" + req.query.type
+                message: "Erreur lors de la récupération du pokemon avec le type" + type
             });
         });
 };
