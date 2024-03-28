@@ -33,22 +33,31 @@ Pokemons.trouverUnType = (type) => {
         var requete = ""
         if (type == ""){
             requete = 'SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense FROM pokemon';
+    
+            sql.query(requete, (erreur, resultat) => {
+                if (erreur) {
+                    // S'il y a une erreur, je la retourne avec reject()
+                    reject(erreur);
+                }
+                // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
+                resolve(resultat.rows);
+            });
         }
         else{
             requete = 'SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense FROM pokemon WHERE type_primaire = $1';
+            const params = [type]
+        
+            sql.query(requete, params, (erreur, resultat) => {
+                if (erreur) {
+                    // S'il y a une erreur, je la retourne avec reject()
+                    reject(erreur);
+                }
+                // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
+                resolve(resultat.rows);
+            });
         }
 
-        const params = [type]
-        
 
-        sql.query(requete, params, (erreur, resultat) => {
-            if (erreur) {
-                // S'il y a une erreur, je la retourne avec reject()
-                reject(erreur);
-            }
-            // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
-            resolve(resultat.rows);
-        });
     });
 
 }
