@@ -38,7 +38,7 @@ exports.trouverUnPokemon = (req, res) => {
 
 exports.trouverUnType = (req, res) => {
     // Teste si le paramètre id est présent et valide
-    var type = [];
+    var type = "";
     var page = 1;
     if (req.query.type) {
         type = req.query.type
