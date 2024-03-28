@@ -49,7 +49,7 @@ Pokemons.trouverUnType = (type) => {
                 reject(erreur);
             }
             // Sinon je retourne le résultat sans faire de validation, c'est possible que le résultat soit vide
-            resolve(resultat);
+            resolve(resultat.rows);
         });
     });
 
