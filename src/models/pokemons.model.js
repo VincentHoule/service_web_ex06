@@ -33,7 +33,7 @@ Pokemons.trouverUnType = (type) => {
         var requete = ""
         if (type == ""){
             requete = `SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense 
-            FROM pokemond;`;
+            FROM pokemon;`;
         }
         else{
             requete = `SELECT id, nom, type_primaire, type_secondaire, pv, attaque, defense 
